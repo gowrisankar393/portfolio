@@ -205,6 +205,48 @@
                     drop-shadow(0 0 150px rgba(0, 243, 255, 0.1));
         }
 
+        /* NEON GLOW EFFECTS */
+        .glass-neon-cyan {
+            border-color: rgba(0, 243, 255, 0.1);
+            transition: border-color 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+        }
+        .glass-neon-cyan:hover {
+            border-color: rgba(0, 243, 255, 0.5);
+            box-shadow: 0 0 40px rgba(0, 243, 255, 0.25);
+            background: rgba(0, 243, 255, 0.03);
+        }
+
+        .glass-neon-purple {
+            border-color: rgba(112, 0, 255, 0.1);
+            transition: border-color 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+        }
+        .glass-neon-purple:hover {
+            border-color: rgba(112, 0, 255, 0.5);
+            box-shadow: 0 0 40px rgba(112, 0, 255, 0.25);
+            background: rgba(112, 0, 255, 0.03);
+        }
+
+        .glass-neon-red {
+            border-color: rgba(255, 0, 51, 0.1);
+            transition: border-color 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+        }
+        .glass-neon-red:hover {
+            border-color: rgba(255, 0, 51, 0.5);
+            box-shadow: 0 0 40px rgba(255, 0, 51, 0.25);
+            background: rgba(255, 0, 51, 0.03);
+        }
+
+        /* WHITE NEON GLOW FOR EXPERIENCE SECTION */
+        .glass-neon-white {
+            border-color: rgba(255, 255, 255, 0.05);
+            transition: border-color 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+        }
+        .glass-neon-white:hover {
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
         #logo-3d-container {
             width: 100%;
             height: clamp(300px, 50vh, 500px);
@@ -317,6 +359,10 @@
     <div class="progress-bar" id="progress"></div>
     <div id="canvas-container"></div>
 
+    <div class="sound-toggle cursor-pointer transition-all hover:bg-white/10" id="soundToggle" style="display:none;">
+        <!-- Hidden logic as requested previously, keeping container for stability -->
+    </div>
+
     <!-- Mobile Menu Overlay -->
     <div id="menuOverlay" onclick="toggleMenu()"></div>
 
@@ -406,12 +452,12 @@
         </div>
     </section>
 
-    <!-- 3. Experience -->
+    <!-- 3. Experience - UPDATED TO WHITE HOVER GLOW -->
     <section id="experience" class="py-24 md:py-32 px-8 md:px-24">
         <div class="max-w-6xl mx-auto">
             <h2 class="text-4xl md:text-5xl font-bold mb-16 tracking-tighter reveal text-sync text-gs-gradient uppercase text-center md:text-left">Experience.</h2>
             <div class="space-y-6">
-                <div class="glass p-6 md:p-8 reveal group hover:bg-white/[0.03] transition-all">
+                <div class="glass p-6 md:p-8 reveal group glass-neon-white transition-all">
                     <div class="flex flex-col md:flex-row justify-between mb-4 gap-2 text-center md:text-left">
                         <h3 class="text-xl md:text-2xl font-bold text-white uppercase">Founder - Vaylen</h3>
                         <span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Nov 2024 — Present</span>
@@ -422,14 +468,14 @@
                         <p class="text-gray-400 text-sm leading-relaxed font-light">In parallel, exploring "Soul Engine", our planned LLM initiative for advanced AI systems that will power future Vaylen products.</p>
                     </div>
                 </div>
-                <div class="glass p-6 md:p-8 reveal group hover:bg-white/[0.03] transition-all">
+                <div class="glass p-6 md:p-8 reveal group glass-neon-white transition-all">
                     <div class="flex flex-col md:flex-row justify-between mb-4 gap-2 text-center md:text-left">
                         <h3 class="text-xl md:text-2xl font-bold uppercase text-white">Photographer / Videographer / editor - IIT Media Society</h3>
                         <span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Jun 2025 — Present</span>
                     </div>
                     <p class="text-gray-400 text-sm leading-relaxed font-light text-center md:text-left">Captured and edited photo and video content for club organized events such as Micromaze 2.0, IEEE Xtreme, AIESEC in IIT Voyage '25 and flagship events such as the University of Westminster Convocation.</p>
                 </div>
-                <div class="glass p-6 md:p-8 reveal group hover:bg-white/[0.03] transition-all">
+                <div class="glass p-6 md:p-8 reveal group glass-neon-white transition-all">
                     <div class="flex flex-col md:flex-row justify-between mb-4 gap-2 text-center md:text-left">
                         <h3 class="text-xl md:text-2xl font-bold uppercase text-white">Director of Membership - IIT Youth Pulse</h3>
                         <span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Sep 2024 — July 2025</span>
