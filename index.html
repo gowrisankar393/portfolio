@@ -30,7 +30,7 @@
             --bg: #020202;
         }
 
-        /* Full Pointer Override for Immersion */
+        /* Full Pointer Override */
         * { cursor: none !important; }
 
         /* Hide custom cursor on mobile/touch devices */
@@ -245,6 +245,7 @@
             position: relative;
             margin-top: -20px;
             overflow: visible;
+            touch-action: none;
         }
 
         .logo-nav-wrapper {
@@ -252,7 +253,7 @@
             align-items: center;
             justify-content: center;
             width: 100%;
-            max-width: 420px; /* Reduced to bring buttons closer */
+            max-width: 420px; 
             margin: -20px auto 0 auto;
             gap: 10px;
             md:gap: 30px;
@@ -288,7 +289,7 @@
             text-align: center;
             font-weight: 700;
             white-space: nowrap;
-            flex: 1; /* Center between buttons */
+            flex: 1; 
         }
 
         #mobileMenu {
@@ -365,7 +366,7 @@
         <a href="#contact" class="mobile-nav-item nav-item" onclick="toggleMenu()">Connect</a>
     </div>
 
-    <header class="fixed top-4 left-0 w-full z-[1500] flex justify-center px-4 md:px-6">
+    <header class="fixed top-4 left-0 w-full z-[1500] flex justify-center px-4 md:px-6 text-center">
         <nav class="nav-island flex items-center">
             <a href="#home" class="text-lg font-bold tracking-tighter text-sync magnetic flex items-center gap-2">
                 <span class="w-2 h-2 rounded-full bg-primary shadow-[0_0_10px_#00f3ff] animate-pulse"></span>
@@ -499,7 +500,6 @@
                     Expanded from an academic framework into a comprehensive suite designed to unify public transport intelligence and traffic management. TransitLK optimizes the entire transit lifecycle through real-time telemetry and predictive models.
                 </p>
                 <div class="grid lg:grid-cols-2 gap-6 md:gap-8">
-                    <!-- Fleet Intelligence & Safety -->
                     <div class="glass p-10 glass-neon-cyan flex flex-col h-full border-primary/10 transition-all">
                         <h4 class="text-xs font-bold uppercase text-primary tracking-widest mb-6 text-center md:text-left">Fleet Intelligence & Safety</h4>
                         <p class="text-sm text-gray-400 mb-8 leading-relaxed font-light text-center md:text-left">
@@ -547,7 +547,6 @@
                     A proprietary multimodal AI architecture focused on the Identity Layer. Soul Engine simulates human communication styles across text, voice, and 3D visual interaction.
                 </p>
                 <div class="grid lg:grid-cols-2 gap-6 md:gap-8">
-                    <!-- Cognitive Identity Simulation -->
                     <div class="glass p-10 glass-neon-cyan flex flex-col h-full border-primary/10 transition-all">
                         <h4 class="text-xs font-bold uppercase text-primary tracking-widest mb-6 text-center md:text-left">Cognitive Identity Simulation</h4>
                         <p class="text-sm text-gray-400 mb-8 leading-relaxed font-light text-center md:text-left">
@@ -562,7 +561,6 @@
                             <span class="text-[9px] uppercase tracking-widest text-primary font-bold animate-pulse">Research Status: Active Prototype ('Soul')</span>
                         </div>
                     </div>
-                    <!-- The Chair -->
                     <div class="glass p-10 glass-neon-purple flex flex-col h-full border-secondary/10 transition-all">
                         <h4 class="text-xs font-bold uppercase text-secondary tracking-widest mb-6 text-center md:text-left">The Chair</h4>
                         <p class="text-sm text-gray-400 mb-8 leading-relaxed font-light text-center md:text-left">
@@ -594,7 +592,6 @@
                     <p>I’m currently focused on building early-stage products and systems in AI and mobility, while remaining open to internships, research opportunities, and collaborations across machine learning, software engineering, IoT, and creative technology.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <!-- FIXED: Removed conflicting Tailwind border-brandRed/10 to allow glass-neon-red to work -->
                     <div class="glass p-8 group glass-neon-red transition-all text-center">
                         <span class="text-xs uppercase text-brandRed mb-4 block tracking-[0.4em] font-bold">YouTube</span>
                         <h4 class="text-2xl font-bold mb-2 uppercase tracking-tighter text-white leading-tight">338k+ views</h4>
@@ -619,21 +616,17 @@
     <section id="contact" class="h-screen flex flex-col justify-center items-center text-center reveal relative px-6">
         <div class="w-24 h-[1px] bg-primary shadow-[0_0_15px_#00f3ff] mb-8"></div>
         <h2 class="text-4xl md:text-6xl font-bold text-sync text-gs-gradient tracking-tighter mb-4">START_SYNC</h2>
-        
         <div id="logo-3d-container"></div>
-        
         <div class="logo-nav-wrapper">
             <button id="logo-prev" class="nav-btn cursor-pointer" onclick="cycleLogo(-1)">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
             </button>
-            
             <div class="flex flex-col items-center justify-center flex-1">
                 <span id="current-logo-label" class="logo-label">LinkedIn</span>
                 <a id="current-logo-link" href="#" target="_blank" class="text-[9px] uppercase tracking-[0.4em] text-white/40 mt-3 hover:text-primary transition-all font-bold cursor-pointer border-b border-white/10 pb-1 text-center">
                     Open_Sync_Portal
                 </a>
             </div>
-
             <button id="logo-next" class="nav-btn cursor-pointer" onclick="cycleLogo(1)">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
             </button>
@@ -667,7 +660,6 @@
                 const mat = new THREE.MeshPhysicalMaterial({ color: 0xffffff, metalness: 0.9, roughness: 0.05, transmission: 1.0, transparent: true, opacity: 0.2, emissive: 0x00f3ff, emissiveIntensity: 0.1 });
                 
                 const scatterRange = window.innerWidth < 768 ? 80 : 120;
-
                 for (let i = 0; i < particleCount; i++) {
                     const mesh = new THREE.Mesh(geo, mat.clone());
                     if (Math.random() > 0.7) mesh.material.emissive.set(0x7000ff);
@@ -758,15 +750,14 @@
             const mat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.8 });
             logoInstancedMesh = new THREE.InstancedMesh(geo, mat, LOGO_COUNT);
             
-            // INITIALIZE MATRICES to prevent "invisible" initial state
             const dummy = new THREE.Object3D();
             for (let i = 0; i < LOGO_COUNT; i++) {
-                dummy.position.copy(targetPositions[currentLogoIndex][i]);
+                const target = targetPositions[currentLogoIndex][i];
+                dummy.position.copy(target);
                 dummy.updateMatrix();
                 logoInstancedMesh.setMatrixAt(i, dummy.matrix);
             }
             logoInstancedMesh.instanceMatrix.needsUpdate = true;
-            
             logoScene.add(logoInstancedMesh);
 
             const handleLogoInput = (clientX, clientY) => {
@@ -828,7 +819,6 @@
                     const fCross = x_raw > -2 && x_raw < 4 && y_raw > 0.5 && y_raw < 2.2;
                     if (boxFrame && (fStem || fTop || fCross)) keep = true;
                 }
-                
                 if (keep) points.push(new THREE.Vector3(x, y, z));
             }
             return points;
@@ -836,10 +826,9 @@
 
         function animateLogo() {
             requestAnimationFrame(animateLogo);
-            const time = performance.now() * 0.001;
             const dummy = new THREE.Object3D();
+            const time = performance.now() * 0.001;
             const isNarrow = window.innerWidth / window.innerHeight < 1.0 || window.innerWidth < 768;
-            
             const scaleFactor = isNarrow ? 16 : 14;
             const mouseV3 = new THREE.Vector3(logoMouse.x * scaleFactor, logoMouse.y * (scaleFactor * 0.7), 0);
 
@@ -847,17 +836,18 @@
                 logoInstancedMesh.getMatrixAt(i, dummy.matrix);
                 dummy.position.setFromMatrixPosition(dummy.matrix);
                 const target = targetPositions[currentLogoIndex][i];
-                dummy.position.lerp(target, 0.02);
+                // SLOW TRANSITION: 0.015 speed for high viscosity feel
+                dummy.position.lerp(target, 0.015);
                 const dist = dummy.position.distanceTo(mouseV3);
                 const repulsionRadius = isNarrow ? 1.4 : 1.5; 
                 if (dist < repulsionRadius) {
                     const power = 1 - (dist / repulsionRadius);
-                    const force = power * 2.0; 
                     const dir = new THREE.Vector3().subVectors(dummy.position, mouseV3).normalize();
-                    dummy.position.add(dir.multiplyScalar(force));
+                    dummy.position.add(dir.multiplyScalar(power * 2.0));
                 }
-                dummy.position.x += Math.sin(time * 0.8 + i) * 0.006;
-                dummy.position.y += Math.cos(time * 0.8 + i) * 0.006;
+                // SLOW BROWNIAN MOTION: time * 0.4
+                dummy.position.x += Math.sin(time * 0.4 + i) * 0.006;
+                dummy.position.y += Math.cos(time * 0.4 + i) * 0.006;
                 dummy.updateMatrix();
                 logoInstancedMesh.setMatrixAt(i, dummy.matrix);
             }
@@ -873,17 +863,12 @@
 
         function updateLogoUI() {
             const current = connections[currentLogoIndex];
-            const label = document.getElementById('current-logo-label');
-            const prevBtn = document.getElementById('logo-prev');
-            const nextBtn = document.getElementById('logo-next');
             const hexColor = `#${current.color.toString(16).padStart(6, '0')}`;
-            label.innerText = current.name;
-            label.style.color = hexColor;
-            [prevBtn, nextBtn].forEach(btn => {
-                btn.style.borderColor = `${hexColor}44`;
-                btn.style.color = hexColor;
-            });
+            document.getElementById('current-logo-label').innerText = current.name;
+            document.getElementById('current-logo-label').style.color = hexColor;
             document.getElementById('current-logo-link').href = current.url;
+            const btns = [document.getElementById('logo-prev'), document.getElementById('logo-next')];
+            btns.forEach(b => { b.style.borderColor = `${hexColor}44`; b.style.color = hexColor; });
         }
 
         const observer = new IntersectionObserver((entries) => {
@@ -905,11 +890,7 @@
         navItems.forEach(link => {
             link.addEventListener('click', (e) => {
                 const id = link.getAttribute('href').substring(1);
-                if(document.getElementById(id)) {
-                    e.preventDefault();
-                    setActiveNav(id);
-                    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-                }
+                if(document.getElementById(id)) { e.preventDefault(); setActiveNav(id); document.getElementById(id).scrollIntoView({ behavior: 'smooth' }); }
             });
         });
         const navObserver = new IntersectionObserver((entries) => {
@@ -941,10 +922,7 @@
         const cursorEl = document.getElementById('cursor');
         const followerEl = document.getElementById('cursor-follower');
         let mX = 0, mY = 0, fX = 0, fY = 0;
-        document.addEventListener('mousemove', (e) => {
-            mX = e.clientX; mY = e.clientY;
-            gsap.set(cursorEl, { x: mX, y: mY });
-        });
+        document.addEventListener('mousemove', (e) => { mX = e.clientX; mY = e.clientY; gsap.set(cursorEl, { x: mX, y: mY }); });
         function updateCursor() {
             fX += (mX - fX - 18) * 0.15; fY += (mY - fY - 18) * 0.15;
             followerEl.style.transform = `translate(${fX}px, ${fY}px)`;
@@ -955,8 +933,7 @@
         function toggleMenu() { 
             const menu = document.getElementById('mobileMenu');
             const overlay = document.getElementById('menuOverlay');
-            const isActive = menu.classList.toggle('active');
-            overlay.classList.toggle('active');
+            menu.classList.toggle('active'); overlay.classList.toggle('active');
         }
     </script>
 </body>
