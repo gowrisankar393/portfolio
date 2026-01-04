@@ -33,6 +33,12 @@
         /* Full Pointer Override for Immersion */
         * { cursor: none !important; }
 
+        /* Hide custom cursor on mobile/touch devices */
+        @media (pointer: coarse) {
+            #cursor, #cursor-follower { display: none !important; }
+            * { cursor: auto !important; }
+        }
+
         body {
             margin: 0;
             background-color: var(--bg);
@@ -126,7 +132,6 @@
 
         .magnetic { display: inline-block; transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1); }
 
-        /* PROGRESS BAR */
         .progress-bar {
             position: fixed;
             top: 0; left: 0; height: 3px;
@@ -181,7 +186,7 @@
         ::-webkit-scrollbar { display: none; }
         * { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* Master Logo Flicker Animation - ENHANCED GLOW */
+        /* Master Logo Flicker Animation */
         @keyframes neonLogoStartup {
             0%, 10%, 20%, 30% { opacity: 0; -webkit-text-stroke: 1px rgba(0, 243, 255, 0); }
             5%, 15%, 25% { 
@@ -218,36 +223,9 @@
                     drop-shadow(0 0 150px rgba(0, 243, 255, 0.1));
         }
 
-        .glass-neon-cyan {
-            border-color: rgba(0, 243, 255, 0.1);
-            transition: border-color 0.4s ease, box-shadow 0.4s ease;
-        }
-        .glass-neon-cyan:hover {
-            border-color: rgba(0, 243, 255, 0.4);
-            box-shadow: 0 0 30px rgba(0, 243, 255, 0.15);
-        }
-
-        .glass-neon-purple {
-            border-color: rgba(112, 0, 255, 0.1);
-            transition: border-color 0.4s ease, box-shadow 0.4s ease;
-        }
-        .glass-neon-purple:hover {
-            border-color: rgba(112, 0, 255, 0.4);
-            box-shadow: 0 0 30px rgba(112, 0, 255, 0.15);
-        }
-
-        .glass-neon-red {
-            border-color: rgba(255, 0, 51, 0.1);
-            transition: border-color 0.4s ease, box-shadow 0.4s ease;
-        }
-        .glass-neon-red:hover {
-            border-color: rgba(255, 0, 51, 0.4);
-            box-shadow: 0 0 30px rgba(255, 0, 51, 0.15);
-        }
-
         #logo-3d-container {
             width: 100%;
-            height: 500px;
+            height: clamp(300px, 50vh, 500px);
             position: relative;
             margin-top: -20px;
             overflow: visible;
@@ -257,7 +235,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 40px;
+            gap: 20px;
+            md:gap: 40px;
             margin-top: -20px;
             z-index: 10;
             position: relative;
@@ -266,8 +245,10 @@
         .nav-btn {
             background: rgba(255,255,255,0.03);
             border: 1px solid rgba(255,255,255,0.1);
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
+            md:width: 50px;
+            md:height: 50px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -279,11 +260,14 @@
 
         .logo-label {
             font-family: 'Syncopate', sans-serif;
-            font-size: 18px;
-            letter-spacing: 6px;
+            font-size: 14px;
+            md:font-size: 18px;
+            letter-spacing: 4px;
+            md:letter-spacing: 6px;
             text-transform: uppercase;
             color: var(--primary);
-            min-width: 220px;
+            min-width: 160px;
+            md:min-width: 220px;
             text-align: center;
             font-weight: 700;
         }
@@ -293,7 +277,7 @@
             position: fixed;
             top: 0;
             right: 0;
-            width: 300px;
+            width: min(300px, 80vw);
             height: 100vh;
             background: rgba(2, 2, 2, 0.95);
             backdrop-filter: blur(30px);
@@ -379,7 +363,7 @@
         <a href="#contact" class="mobile-nav-item nav-item" onclick="toggleMenu()">Connect</a>
     </div>
 
-    <header class="fixed top-0 left-0 w-full z-[1500] flex justify-center px-6">
+    <header class="fixed top-0 left-0 w-full z-[1500] flex justify-center px-4 md:px-6">
         <nav class="nav-island flex items-center w-full">
             <a href="#home" class="text-lg font-bold tracking-tighter text-sync magnetic flex items-center gap-2" onmouseenter="playSfx('hover')">
                 <span class="w-2 h-2 rounded-full bg-primary shadow-[0_0_10px_#00f3ff] animate-pulse"></span>
@@ -404,45 +388,45 @@
     </header>
 
     <!-- 1. Identity -->
-    <section id="home" class="min-h-screen flex items-center px-12 md:px-24">
-        <div class="max-w-6xl">
-            <div class="flex items-center gap-4 mb-8 reveal">
+    <section id="home" class="min-h-screen flex items-center px-8 md:px-24">
+        <div class="max-w-6xl w-full">
+            <div class="flex items-center gap-4 mb-6 md:mb-8 reveal">
                 <div class="w-12 h-[1px] bg-primary shadow-[0_0_10px_#00f3ff]"></div>
             </div>
-            <h1 class="text-7xl md:text-[110px] font-bold leading-[0.9] tracking-tighter mb-12 reveal">
+            <h1 class="text-5xl md:text-[110px] font-bold leading-[0.95] tracking-tighter mb-12 reveal">
                 <span class="text-gs-gradient uppercase">Gowri</span><br/><span class="text-sync text-gs-gradient uppercase">SANKAR</span>
             </h1>
-            <p class="text-lg md:text-xl text-gray-400 max-w-4xl mb-12 reveal font-light leading-relaxed">
+            <p class="text-base md:text-xl text-gray-400 max-w-4xl mb-12 reveal font-light leading-relaxed">
                 Aspiring Artificial Intelligence and Data Science Undergraduate at Informatics Institute of Technology (IIT), Sri Lanka, affiliated with Robert Gordon University, Aberdeen. Architecting intelligent mobility ecosystems and advanced AI frameworks. Founder of <a href="https://www.linkedin.com/company/110878350" target="_blank" class="text-primary font-bold cursor-pointer">Vaylen</a>.
             </p>
             <div class="flex flex-wrap gap-4 reveal">
-                <div class="glass px-6 py-4 flex flex-col border-primary/10">
+                <div class="glass px-6 py-4 flex flex-col border-primary/10 w-full sm:w-auto">
                     <span class="text-[10px] uppercase text-primary tracking-[0.4em] mb-2 font-bold">Core Arsenal</span>
-                    <span class="text-base font-bold text-white uppercase tracking-widest">Python, Java, SQL, R, JavaScript</span>
+                    <span class="text-sm md:text-base font-bold text-white uppercase tracking-widest">Python, Java, SQL, R, JavaScript</span>
                 </div>
-                <div class="glass px-6 py-4 flex flex-col border-secondary/10">
+                <div class="glass px-6 py-4 flex flex-col border-secondary/10 w-full sm:w-auto">
                     <span class="text-[10px] uppercase text-secondary tracking-[0.4em] mb-2 font-bold">Frameworks</span>
-                    <span class="text-base font-bold text-white uppercase tracking-widest">TF, Scikit-Learn, Pandas</span>
+                    <span class="text-sm md:text-base font-bold text-white uppercase tracking-widest">TF, Scikit-Learn, Pandas</span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- 2. Education -->
-    <section id="education" class="py-32 px-12 md:px-24 bg-white/[0.01]">
+    <section id="education" class="py-24 md:py-32 px-8 md:px-24 bg-white/[0.01]">
         <div class="max-w-6xl mx-auto">
-            <h2 class="text-5xl font-bold mb-16 tracking-tighter reveal text-sync text-gs-gradient uppercase">Education.</h2>
-            <div class="grid md:grid-cols-2 gap-8 reveal">
-                <div class="glass p-10 border-l-2 border-primary/50 glass-neon-cyan">
+            <h2 class="text-4xl md:text-5xl font-bold mb-16 tracking-tighter reveal text-sync text-gs-gradient uppercase">Education.</h2>
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8 reveal">
+                <div class="glass p-8 md:p-10 border-l-2 border-primary/50 glass-neon-cyan">
                     <span class="text-xs text-primary font-bold tracking-widest uppercase">2024 — Present</span>
-                    <h3 class="text-2xl font-bold mt-4 mb-2 uppercase text-white">IIT (Informatics Institute of Technology)</h3>
-                    <p class="text-gray-400 text-sm font-bold uppercase tracking-widest">Affiliated with RGU, Scotland</p>
+                    <h3 class="text-xl md:text-2xl font-bold mt-4 mb-2 uppercase text-white">IIT (Informatics Institute of Technology)</h3>
+                    <p class="text-gray-400 text-xs md:text-sm font-bold uppercase tracking-widest">Affiliated with RGU, Scotland</p>
                     <p class="mt-4 text-sm leading-relaxed text-gray-400 font-light">BSc (Hons) AI and Data Science. Awarded Distinction in Foundation Certificate.</p>
                 </div>
-                <div class="glass p-10 border-l-2 border-secondary/50 glass-neon-purple">
+                <div class="glass p-8 md:p-10 border-l-2 border-secondary/50 glass-neon-purple">
                     <span class="text-xs text-secondary font-bold tracking-widest uppercase block mb-1">2010 — 2022</span>
-                    <h3 class="text-2xl font-bold mt-4 mb-2 uppercase text-white">S. Thomas' College</h3>
-                    <p class="text-gray-400 text-sm font-bold uppercase tracking-widest">Mount Lavinia</p>
+                    <h3 class="text-xl md:text-2xl font-bold mt-4 mb-2 uppercase text-white">S. Thomas' College</h3>
+                    <p class="text-gray-400 text-xs md:text-sm font-bold uppercase tracking-widest">Mount Lavinia</p>
                     <p class="mt-4 text-sm leading-relaxed text-gray-400 font-light">G.C.E. Ordinary Level: 7As, 2Bs. Active leadership in STEM and Aeronautical societies.</p>
                 </div>
             </div>
@@ -450,13 +434,13 @@
     </section>
 
     <!-- 3. Experience -->
-    <section id="experience" class="py-32 px-12 md:px-24">
+    <section id="experience" class="py-24 md:py-32 px-8 md:px-24">
         <div class="max-w-6xl mx-auto">
-            <h2 class="text-5xl font-bold mb-16 tracking-tighter reveal text-sync text-gs-gradient uppercase text-white">Experience.</h2>
+            <h2 class="text-4xl md:text-5xl font-bold mb-16 tracking-tighter reveal text-sync text-gs-gradient uppercase text-white">Experience.</h2>
             <div class="space-y-6">
-                <div class="glass p-8 reveal group hover:bg-white/[0.03] transition-all">
-                    <div class="flex flex-col md:flex-row justify-between mb-4">
-                        <h3 class="text-2xl font-bold text-white uppercase">Founder - Vaylen</h3>
+                <div class="glass p-6 md:p-8 reveal group hover:bg-white/[0.03] transition-all">
+                    <div class="flex flex-col md:flex-row justify-between mb-4 gap-2">
+                        <h3 class="text-xl md:text-2xl font-bold text-white uppercase">Founder - Vaylen</h3>
                         <span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Nov 2024 — Present</span>
                     </div>
                     <div class="space-y-4">
@@ -465,16 +449,16 @@
                         <p class="text-gray-400 text-sm leading-relaxed font-light">In parallel, exploring "Soul Engine", our planned LLM initiative for advanced AI systems that will power future Vaylen products.</p>
                     </div>
                 </div>
-                <div class="glass p-8 reveal group hover:bg-white/[0.03] transition-all">
-                    <div class="flex flex-col md:flex-row justify-between mb-4">
-                        <h3 class="text-2xl font-bold uppercase text-white">Photographer / Videographer / editor - IIT Media Society</h3>
+                <div class="glass p-6 md:p-8 reveal group hover:bg-white/[0.03] transition-all">
+                    <div class="flex flex-col md:flex-row justify-between mb-4 gap-2">
+                        <h3 class="text-xl md:text-2xl font-bold uppercase text-white">Photographer / Videographer / editor - IIT Media Society</h3>
                         <span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Jun 2025 — Present</span>
                     </div>
                     <p class="text-gray-400 text-sm leading-relaxed font-light">Captured and edited photo and video content for club organized events such as Micromaze 2.0, IEEE Xtreme, AIESEC in IIT Voyage '25 and flagship events such as the University of Westminster Convocation.</p>
                 </div>
-                <div class="glass p-8 reveal group hover:bg-white/[0.03] transition-all">
-                    <div class="flex flex-col md:flex-row justify-between mb-4">
-                        <h3 class="text-2xl font-bold uppercase text-white">Director of Membership - IIT Youth Pulse</h3>
+                <div class="glass p-6 md:p-8 reveal group hover:bg-white/[0.03] transition-all">
+                    <div class="flex flex-col md:flex-row justify-between mb-4 gap-2">
+                        <h3 class="text-xl md:text-2xl font-bold uppercase text-white">Director of Membership - IIT Youth Pulse</h3>
                         <span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Sep 2024 — July 2025</span>
                     </div>
                     <p class="text-gray-400 text-sm leading-relaxed font-light">
@@ -486,7 +470,7 @@
     </section>
 
     <!-- 4. Vaylen Deep Dive -->
-    <section id="vaylen" class="py-32 px-12 md:px-24 bg-white/[0.01]">
+    <section id="vaylen" class="py-24 md:py-32 px-8 md:px-24 bg-white/[0.01]">
         <div class="max-w-6xl mx-auto">
             <div class="mb-24 reveal text-center">
                 <h2 class="text-7xl md:text-[150px] font-bold text-sync uppercase tracking-widest vaylen-logo-outline">VAYLEN</h2>
@@ -511,8 +495,11 @@
                 <div class="flex items-center gap-6 mb-12">
                     <h3 class="text-4xl font-bold tracking-tighter uppercase text-sync text-gs-gradient">TransitLK</h3>
                 </div>
+                <p class="text-base md:text-lg font-light leading-relaxed text-gray-400 mb-12 max-w-4xl">
+                    Expanded from an academic framework into a comprehensive suite designed to unify public transport intelligence and traffic management. TransitLK optimizes the entire transit lifecycle through real-time telemetry and predictive models.
+                </p>
                 <div class="grid lg:grid-cols-2 gap-8">
-                    <!-- Fleet Intelligence & Safety - STATUS RESTORED -->
+                    <!-- Fleet Intelligence & Safety -->
                     <div class="glass p-10 glass-neon-cyan flex flex-col h-full border-primary/10">
                         <h4 class="text-xs font-bold uppercase text-primary tracking-widest mb-6">Fleet Intelligence & Safety</h4>
                         <p class="text-sm text-gray-400 mb-8 leading-relaxed font-light">
@@ -523,7 +510,6 @@
                             <li><span class="text-white block mb-1 font-bold tracking-widest">Safety Fusion</span> Accelerometer-calibrated crash detection, drowsiness monitoring, and GPS logging.</li>
                             <li><span class="text-white block mb-1 font-bold tracking-widest">Retraining Loop</span> End-of-day CSV trip data processing to retrain models on daily movement patterns.</li>
                         </ul>
-                        <!-- RESTORED: Pulsing Status -->
                         <div class="pt-6 mt-auto">
                             <span class="text-[9px] uppercase tracking-widest text-primary font-bold animate-pulse">Research Status: Active Prototype ('Soul')</span>
                         </div>
@@ -542,7 +528,6 @@
                                 <span class="text-white block mb-1 font-bold tracking-widest">Highway Intelligence</span>
                                 ANPR vehicle property verification to combat plate cloning. Automated entry-exit speed analysis via high-precision timestamping.
                             </p>
-                            <!-- Vision-AI, LIDAR Fusion, ANPR Logic pills -->
                             <div class="flex gap-2 pt-2">
                                 <span class="px-3 py-1 rounded-full bg-primary/10 text-[8px] text-primary border border-primary/20 uppercase font-bold tracking-widest">Vision-AI</span>
                                 <span class="px-3 py-1 rounded-full bg-secondary/10 text-[8px] text-secondary border border-secondary/20 uppercase font-bold tracking-widest">LIDAR Fusion</span>
@@ -558,6 +543,9 @@
                 <div class="flex items-center gap-6 mb-12">
                     <h3 class="text-4xl font-bold tracking-tighter uppercase text-sync text-gs-gradient">Soul Engine</h3>
                 </div>
+                <p class="text-base md:text-lg font-light leading-relaxed text-gray-400 mb-12 max-w-4xl">
+                    A proprietary multimodal AI architecture focused on the Identity Layer. Soul Engine simulates human communication styles across text, voice, and 3D visual interaction.
+                </p>
                 <div class="grid lg:grid-cols-2 gap-8">
                     <!-- Cognitive Identity Simulation -->
                     <div class="glass p-10 glass-neon-cyan flex flex-col h-full border-primary/10">
@@ -574,7 +562,7 @@
                             <span class="text-[9px] uppercase tracking-widest text-primary font-bold animate-pulse">Research Status: Active Prototype ('Soul')</span>
                         </div>
                     </div>
-                    <!-- The Chair - FULL CONTENT RESTORED -->
+                    <!-- The Chair -->
                     <div class="glass p-10 glass-neon-purple flex flex-col h-full border-secondary/10">
                         <h4 class="text-xs font-bold uppercase text-secondary tracking-widest mb-6">The Chair</h4>
                         <p class="text-sm text-gray-400 mb-8 leading-relaxed font-light">
@@ -595,33 +583,31 @@
         </div>
     </section>
 
-    <!-- 5. About Me - FULL TEXT RESTORED -->
-    <section id="about" class="py-32 px-12 md:px-24 text-center">
+    <!-- 5. About Me -->
+    <section id="about" class="py-24 md:py-32 px-8 md:px-24 text-center">
         <div class="max-w-6xl mx-auto">
-            <h2 class="text-5xl font-bold mb-16 tracking-tighter reveal text-sync text-gs-gradient uppercase text-center">About Me.</h2>
-            <div class="grid lg:grid-cols-1 gap-16">
-                <div class="reveal">
-                    <div class="text-xl text-gray-400 font-light leading-relaxed mb-12 max-w-4xl space-y-6 mx-auto text-center">
-                        <p>I’m Gowrisankar Sivakumar, an undergraduate in Artificial Intelligence & Data Science at the Informatics Institute of Technology (IIT), Sri Lanka, affiliated with Robert Gordon University, Aberdeen. I’m deeply interested in building intelligent, data-driven systems that operate at scale, especially at the intersection of AI, infrastructure, and real-world problem solving. Alongside my academic journey, I actively explore how technology can be designed not just to function, but to meaningfully interact with people and environments.</p>
-                        <p>Beyond academics, I’ve taken on leadership and creative roles across campus — from peer tutoring and student initiatives to media, photography, and large-scale event organizing. I also have a strong creative background as a music producer and composer, where I work across sound design, mixing, and mastering, blending technical precision with artistic expression. This mix of engineering discipline, leadership, and creative thinking shapes how I approach projects: with curiosity, structure, and long-term vision.</p>
-                        <p>I’m currently focused on building early-stage products and systems in AI and mobility, while remaining open to internships, research opportunities, and collaborations across machine learning, software engineering, IoT, and creative technology.</p>
+            <h2 class="text-4xl md:text-5xl font-bold mb-16 tracking-tighter reveal text-sync text-gs-gradient uppercase text-center">About Me.</h2>
+            <div class="reveal">
+                <div class="text-lg md:text-xl text-gray-400 font-light leading-relaxed mb-12 max-w-4xl space-y-6 mx-auto text-center">
+                    <p>I’m Gowrisankar Sivakumar, an undergraduate in Artificial Intelligence & Data Science at the Informatics Institute of Technology (IIT), Sri Lanka, affiliated with Robert Gordon University, Aberdeen. I’m deeply interested in building intelligent, data-driven systems that operate at scale, especially at the intersection of AI, infrastructure, and real-world problem solving. Alongside my academic journey, I actively explore how technology can be designed not just to function, but to meaningfully interact with people and environments.</p>
+                    <p>Beyond academics, I’ve taken on leadership and creative roles across campus — from peer tutoring and student initiatives to media, photography, and large-scale event organizing. I also have a strong creative background as a music producer and composer, where I work across sound design, mixing, and mastering, blending technical precision with artistic expression. This mix of engineering discipline, leadership, and creative thinking shapes how I approach projects: with curiosity, structure, and long-term vision.</p>
+                    <p>I’m currently focused on building early-stage products and systems in AI and mobility, while remaining open to internships, research opportunities, and collaborations across machine learning, software engineering, IoT, and creative technology.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="glass p-8 group border-brandRed/10 glass-neon-red transition-all">
+                        <span class="text-xs uppercase text-brandRed mb-4 block tracking-[0.4em] font-bold">YouTube</span>
+                        <h4 class="text-2xl font-bold mb-2 uppercase tracking-tighter text-white leading-tight">338k+ views</h4>
+                        <a href="https://www.youtube.com/@gowrisankar393" target="_blank" class="text-xs text-brandRed underline font-bold cursor-pointer">Visit Channel</a>
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div class="glass p-8 group border-brandRed/10 glass-neon-red transition-all">
-                            <span class="text-xs uppercase text-brandRed mb-4 block tracking-[0.4em] font-bold">YouTube</span>
-                            <h4 class="text-2xl font-bold mb-2 uppercase tracking-tighter text-white leading-tight">338k+ views</h4>
-                            <a href="https://www.youtube.com/@gowrisankar393" target="_blank" class="text-xs text-brandRed underline font-bold cursor-pointer">Visit Channel</a>
-                        </div>
-                        <div class="glass p-8 border-secondary/10 glass-neon-purple transition-all">
-                            <span class="text-xs uppercase text-secondary mb-4 block tracking-[0.4em] font-bold">Colours</span>
-                            <h4 class="text-2xl font-bold mb-2 uppercase tracking-tighter text-white leading-tight">National and School</h4>
-                            <p class="text-xs opacity-50 uppercase font-bold">Rifle Shooting</p>
-                        </div>
-                        <div class="glass p-8 border-primary/10 glass-neon-cyan transition-all">
-                            <span class="text-xs uppercase text-primary mb-4 block tracking-[0.4em] font-bold">Piano</span>
-                            <h4 class="text-2xl font-bold mb-2 uppercase tracking-tighter text-white leading-tight">Grade 6</h4>
-                            <p class="text-xs opacity-50 uppercase font-bold">ABRSM Proficiency</p>
-                        </div>
+                    <div class="glass p-8 border-secondary/10 glass-neon-purple transition-all">
+                        <span class="text-xs uppercase text-secondary mb-4 block tracking-[0.4em] font-bold">Colours</span>
+                        <h4 class="text-2xl font-bold mb-2 uppercase tracking-tighter text-white leading-tight">National and School</h4>
+                        <p class="text-xs opacity-50 uppercase font-bold">Rifle Shooting</p>
+                    </div>
+                    <div class="glass p-8 border-primary/10 glass-neon-cyan transition-all">
+                        <span class="text-xs uppercase text-primary mb-4 block tracking-[0.4em] font-bold">Piano</span>
+                        <h4 class="text-2xl font-bold mb-2 uppercase tracking-tighter text-white leading-tight">Grade 6</h4>
+                        <p class="text-xs opacity-50 uppercase font-bold">ABRSM Proficiency</p>
                     </div>
                 </div>
             </div>
@@ -682,7 +668,7 @@
 
         // 3D Background Logic
         let scene, camera, renderer, particles = [];
-        const particleCount = 200, scatterRange = 120; 
+        const particleCount = 200;
 
         function init3D() {
             try {
@@ -698,6 +684,9 @@
                 const p2 = new THREE.PointLight(0x7000ff, 2.5, 90); p2.position.set(-20, -20, 20); scene.add(p2);
                 const geo = new THREE.IcosahedronGeometry(0.8, 0);
                 const mat = new THREE.MeshPhysicalMaterial({ color: 0xffffff, metalness: 0.9, roughness: 0.05, transmission: 1.0, transparent: true, opacity: 0.2, emissive: 0x00f3ff, emissiveIntensity: 0.1 });
+                
+                const scatterRange = window.innerWidth < 768 ? 80 : 120;
+
                 for (let i = 0; i < particleCount; i++) {
                     const mesh = new THREE.Mesh(geo, mat.clone());
                     if (Math.random() > 0.7) mesh.material.emissive.set(0x7000ff);
@@ -713,13 +702,19 @@
         }
 
         const m3D = new THREE.Vector3(0, 0, 0);
-        window.addEventListener('mousemove', (e) => {
+        
+        // Touch interaction logic for Background particles
+        const handleInteraction = (x, y) => {
             if (!camera) return;
-            const v = new THREE.Vector3((e.clientX / window.innerWidth) * 2 - 1, -(e.clientY / window.innerHeight) * 2 + 1, 0.5);
+            const v = new THREE.Vector3((x / window.innerWidth) * 2 - 1, -(y / window.innerHeight) * 2 + 1, 0.5);
             v.unproject(camera);
             const dir = v.sub(camera.position).normalize();
             m3D.copy(camera.position).add(dir.multiplyScalar(-camera.position.z / dir.z));
-        });
+        };
+
+        window.addEventListener('mousemove', (e) => handleInteraction(e.clientX, e.clientY));
+        window.addEventListener('touchmove', (e) => handleInteraction(e.touches[0].clientX, e.touches[0].clientY));
+        window.addEventListener('touchstart', (e) => handleInteraction(e.touches[0].clientX, e.touches[0].clientY));
 
         function animate() {
             if (!renderer) return;
@@ -747,7 +742,7 @@
             renderer.render(scene, camera);
         }
 
-        // --- Logo Switcher logic ---
+        // --- Logo Switcher Logic ---
         let logoScene, logoCamera, logoRenderer, logoInstancedMesh;
         let currentLogoIndex = 0;
         let targetPositions = [];
@@ -761,87 +756,113 @@
             { name: "Facebook", url: "https://www.facebook.com/share/1b4xuN1bc6/", color: 0x1877f2 }
         ];
 
+        const logoMouse = new THREE.Vector2(-100, -100);
+
         function initLogoSwitcher() {
             const container = document.getElementById('logo-3d-container');
+            const isNarrow = window.innerWidth / window.innerHeight < 1.0 || window.innerWidth < 768;
+
             logoScene = new THREE.Scene();
             logoCamera = new THREE.PerspectiveCamera(40, container.clientWidth / container.clientHeight, 0.1, 1000);
-            logoCamera.position.z = 25;
+            logoCamera.position.z = isNarrow ? 35 : 25;
+
             logoRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
             logoRenderer.setSize(container.clientWidth, container.clientHeight);
             logoRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
             container.appendChild(logoRenderer.domElement);
-            targetPositions = [generateLogoPoints('linkedin'), generateLogoPoints('youtube'), generateLogoPoints('github'), generateLogoPoints('instagram'), generateLogoPoints('facebook')];
+            
+            targetPositions = [
+                generateLogoPoints('linkedin'), generateLogoPoints('youtube'), 
+                generateLogoPoints('github'), generateLogoPoints('instagram'), generateLogoPoints('facebook')
+            ];
+
             const geo = new THREE.BoxGeometry(0.12, 0.12, 0.12);
             const mat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.8 });
             logoInstancedMesh = new THREE.InstancedMesh(geo, mat, LOGO_COUNT);
             logoScene.add(logoInstancedMesh);
+
+            // Interaction listeners for Switcher
+            const handleLogoInput = (clientX, clientY) => {
+                const rect = container.getBoundingClientRect();
+                logoMouse.x = ((clientX - rect.left) / rect.width) * 2 - 1;
+                logoMouse.y = -((clientY - rect.top) / rect.height) * 2 + 1;
+            };
+
+            container.addEventListener('mousemove', (e) => handleLogoInput(e.clientX, e.clientY));
+            container.addEventListener('touchstart', (e) => handleLogoInput(e.touches[0].clientX, e.touches[0].clientY));
+            container.addEventListener('touchmove', (e) => handleLogoInput(e.touches[0].clientX, e.touches[0].clientY));
+
             updateLogoUI();
             animateLogo();
         }
 
         function generateLogoPoints(type) {
             const points = [];
+            const isNarrow = window.innerWidth / window.innerHeight < 1.0 || window.innerWidth < 768;
+            const scale = isNarrow ? 0.7 : 1.0;
+
             while(points.length < LOGO_COUNT) {
-                const x = (Math.random() - 0.5) * 16;
-                const y = (Math.random() - 0.5) * 16;
+                const x_raw = (Math.random() - 0.5) * 16;
+                const y_raw = (Math.random() - 0.5) * 16;
+                const x = x_raw * scale;
+                const y = y_raw * scale;
                 const z = (Math.random() - 0.5) * 0.5;
                 let keep = false;
+                
                 if (type === 'linkedin') {
-                    const insideSquare = Math.abs(x) < 6.5 && Math.abs(y) < 6.5;
-                    const inDot = Math.abs(x + 2.8) < 0.8 && y > 1.8 && y < 3.2;
-                    const inStem = Math.abs(x + 2.8) < 0.8 && y > -4 && y < 1.2;
-                    const nStem = Math.abs(x - 0.2) < 0.8 && y > -4 && y < 1.2;
-                    const nArch = x > 0 && x < 3.5 && y > 0 && y < 1.5;
-                    const nRight = Math.abs(x - 3.5) < 0.8 && y > -4 && y < 1.2;
+                    const insideSquare = Math.abs(x_raw) < 6.5 && Math.abs(y_raw) < 6.5;
+                    const inDot = Math.abs(x_raw + 2.8) < 0.8 && y_raw > 1.8 && y_raw < 3.2;
+                    const inStem = Math.abs(x_raw + 2.8) < 0.8 && y_raw > -4 && y_raw < 1.2;
+                    const nStem = Math.abs(x_raw - 0.2) < 0.8 && y_raw > -4 && y_raw < 1.2;
+                    const nArch = x_raw > 0 && x_raw < 3.5 && y_raw > 0 && y_raw < 1.5;
+                    const nRight = Math.abs(x_raw - 3.5) < 0.8 && y_raw > -4 && y_raw < 1.2;
                     if (insideSquare && (inDot || inStem || nStem || nArch || nRight)) keep = true;
                     else if (insideSquare && Math.random() > 0.95) keep = true;
                 } else if (type === 'youtube') {
-                    const rRect = (Math.abs(x) < 8.5 && Math.abs(y) < 5.5);
-                    const triangle = x > -1.5 && x < 1.5 && Math.abs(y) < (1.5 - x) * 0.8;
+                    const rRect = (Math.abs(x_raw) < 8.5 && Math.abs(y_raw) < 5.5);
+                    const triangle = x_raw > -1.5 && x_raw < 1.5 && Math.abs(y_raw) < (1.5 - x_raw) * 0.8;
                     if (rRect && !triangle) keep = true;
                 } else if (type === 'github') {
-                    const dist = Math.sqrt(x*x + y*y);
+                    const dist = Math.sqrt(x_raw*x_raw + y_raw*y_raw);
                     const body = dist < 5.5;
-                    const leftEar = x < -3.5 && x > -6 && y > 3.5 && y < 6.5;
-                    const rightEar = x > 3.5 && x < 6 && y > 3.5 && y < 6.5;
+                    const leftEar = x_raw < -3.5 && x_raw > -6 && y_raw > 3.5 && y_raw < 6.5;
+                    const rightEar = x_raw > 3.5 && x_raw < 6 && y_raw > 3.5 && y_raw < 6.5;
                     if (body || leftEar || rightEar) keep = true;
                 } else if (type === 'instagram') {
-                    const dist = Math.sqrt(x*x + y*y);
-                    const outerFrame = (Math.abs(x) < 6.5 && Math.abs(y) < 6.5) && (Math.abs(x) > 5.4 || Math.abs(y) > 5.4);
+                    const dist = Math.sqrt(x_raw*x_raw + y_raw*y_raw);
+                    const outerFrame = (Math.abs(x_raw) < 6.5 && Math.abs(y_raw) < 6.5) && (Math.abs(x_raw) > 5.4 || Math.abs(y_raw) > 5.4);
                     const innerCircle = dist > 2.2 && dist < 3.2;
-                    const lensDot = Math.abs(x - 4.2) < 0.6 && Math.abs(y - 4.2) < 0.6;
+                    const lensDot = Math.abs(x_raw - 4.2) < 0.6 && Math.abs(y_raw - 4.2) < 0.6;
                     if (outerFrame || innerCircle || lensDot) keep = true;
                 } else if (type === 'facebook') {
-                    const boxFrame = Math.abs(x) < 6.5 && Math.abs(y) < 6.5;
-                    const fStem = x > 0.5 && x < 2.5 && y > -6.5 && y < 4;
-                    const fTop = x > 0.5 && x < 5 && y > 3 && y < 5.5; 
-                    const fCross = x > -2 && x < 4 && y > 0.5 && y < 2.2;
+                    const boxFrame = Math.abs(x_raw) < 6.5 && Math.abs(y_raw) < 6.5;
+                    const fStem = x_raw > 0.5 && x_raw < 2.5 && y_raw > -6.5 && y_raw < 4;
+                    const fTop = x_raw > 0.5 && x_raw < 5 && y_raw > 3 && y_raw < 5.5; 
+                    const fCross = x_raw > -2 && x_raw < 4 && y_raw > 0.5 && y_raw < 2.2;
                     if (boxFrame && (fStem || fTop || fCross)) keep = true;
                 }
+                
                 if (keep) points.push(new THREE.Vector3(x, y, z));
             }
             return points;
         }
 
-        const logoMouse = new THREE.Vector2(-100, -100);
-        document.getElementById('logo-3d-container').addEventListener('mousemove', (e) => {
-            const rect = e.currentTarget.getBoundingClientRect();
-            logoMouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-            logoMouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
-        });
-
         function animateLogo() {
             requestAnimationFrame(animateLogo);
             const time = performance.now() * 0.001;
             const dummy = new THREE.Object3D();
-            const mouseV3 = new THREE.Vector3(logoMouse.x * 14, logoMouse.y * 10, 0);
+            const isNarrow = window.innerWidth / window.innerHeight < 1.0 || window.innerWidth < 768;
+            
+            const scaleFactor = isNarrow ? 18 : 14;
+            const mouseV3 = new THREE.Vector3(logoMouse.x * scaleFactor, logoMouse.y * (scaleFactor * 0.7), 0);
+
             for (let i = 0; i < LOGO_COUNT; i++) {
                 logoInstancedMesh.getMatrixAt(i, dummy.matrix);
                 dummy.position.setFromMatrixPosition(dummy.matrix);
                 const target = targetPositions[currentLogoIndex][i];
                 dummy.position.lerp(target, 0.02);
                 const dist = dummy.position.distanceTo(mouseV3);
-                const repulsionRadius = 1.5; 
+                const repulsionRadius = isNarrow ? 1.2 : 1.5; 
                 if (dist < repulsionRadius) {
                     const power = 1 - (dist / repulsionRadius);
                     const force = power * 2.0; 
@@ -879,7 +900,7 @@
             document.getElementById('current-logo-link').href = current.url;
         }
 
-        // Observers and Scroll logic
+        // Standard Scroll Reveal / Nav Logic
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(e => { 
                 if (e.isIntersecting) e.target.classList.add('active'); 
@@ -928,6 +949,7 @@
                 logoRenderer.setSize(c.clientWidth, c.clientHeight);
                 logoCamera.aspect = c.clientWidth / c.clientHeight;
                 logoCamera.updateProjectionMatrix();
+                logoCamera.position.z = (window.innerWidth / window.innerHeight < 1.0 || window.innerWidth < 768) ? 35 : 25;
             }
         });
 
